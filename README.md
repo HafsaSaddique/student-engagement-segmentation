@@ -156,5 +156,55 @@ The data preparation stage is implemented. K-Means segmentation, the saved model
 
 The raw-data generator uses a fixed random seed. Run the generator first and then run the preparation script from the project root to reproduce the dataset and cleaned output.
 
+## Task 2: Student Engagement Clustering
 
+### Overview
+
+This task uses K-Means clustering to group students according to three engagement features: attendance rate, average grade, and extracurricular activity count. The dataset contains 300 synthetic student records and does not contain real student information.
+
+### Tools and Technologies
+
+- Python
+- pandas and NumPy
+- scikit-learn
+- Matplotlib
+- joblib
+
+### Methodology
+
+1. Load the cleaned student dataset from `data/cleaned/cleaned_student_data.csv`.
+2. Select `AttendanceRate`, `AvgGrade`, and `ExtracurricularCount`.
+3. Standardize the three features using `StandardScaler`.
+4. Run K-Means for values of k from 2 to 8 and compare inertia using the elbow method.
+5. Select a cluster count based on the elbow analysis.
+6. Train the final K-Means model and assign a `Segment` label to every student.
+7. Save the labeled dataset, elbow plot, and trained model with its scaler.
+
+### How to Run
+
+Install the dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Run the clustering script from the project root:
+
+```bash
+python train_clustering.py
+```
+
+### Generated Files
+
+| File | Purpose |
+|---|---|
+| `train_clustering.py` | Runs the clustering workflow |
+| `elbow_plot.png` | Shows the elbow analysis for k = 2–8 |
+| `labeled_students.csv` | Contains student features and the `Segment` column |
+| `kmeans_model.pkl` | Stores the fitted scaler, K-Means model, feature names, and selected k |
+| `requirements.txt` | Lists required Python libraries |
+
+### Validation and Limitations
+
+The generated labeled dataset contains 300 records and a `Segment` column with no missing labels. Cluster numbers are identifiers, not rankings of student performance. Because the dataset is synthetic, the resulting groups are exploratory and should not be interpreted as validated categories of real students.
 
