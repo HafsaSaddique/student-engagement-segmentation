@@ -156,11 +156,13 @@ The data preparation stage is implemented. K-Means segmentation, the saved model
 
 The raw-data generator uses a fixed random seed. Run the generator first and then run the preparation script from the project root to reproduce the dataset and cleaned output.
 
+# Student Engagement Segmentation
+
 ## Task 2: Student Engagement Clustering
 
 ### Overview
 
-This task uses K-Means clustering to group students according to three engagement features: attendance rate, average grade, and extracurricular activity count. The dataset contains 300 synthetic student records and does not contain real student information.
+This task applies K-Means clustering to group students using three engagement features: attendance rate, average grade, and extracurricular activity count. The dataset contains 300 synthetic student records and does not contain real student information.
 
 ### Tools and Technologies
 
@@ -172,39 +174,61 @@ This task uses K-Means clustering to group students according to three engagemen
 
 ### Methodology
 
-1. Load the cleaned student dataset from `data/cleaned/cleaned_student_data.csv`.
-2. Select `AttendanceRate`, `AvgGrade`, and `ExtracurricularCount`.
-3. Standardize the three features using `StandardScaler`.
-4. Run K-Means for values of k from 2 to 8 and compare inertia using the elbow method.
-5. Select a cluster count based on the elbow analysis.
+1. Load the cleaned dataset from `data/cleaned/cleaned_student_data.csv`.
+2. Select `AttendanceRate`, `AvgGrade`, and `ExtracurricularCount` as clustering features.
+3. Standardize the features using `StandardScaler`.
+4. Run K-Means for values of k from 2 through 8 and compare inertia using the elbow method.
+5. Estimate a suitable cluster count using the maximum-distance-from-the-line heuristic.
 6. Train the final K-Means model and assign a `Segment` label to every student.
-7. Save the labeled dataset, elbow plot, and trained model with its scaler.
+7. Save the labeled dataset, elbow plot, and trained model bundle containing the fitted scaler, K-Means model, feature names, and selected k.
 
 ### How to Run
 
-Install the dependencies:
+Run these commands from the project root.
+
+Install dependencies:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-Run the clustering script from the project root:
+Run the clustering workflow:
 
 ```bash
 python train_clustering.py
 ```
 
+The script prints the number of processed students, selected k, segment counts, and output file locations.
+
 ### Generated Files
 
 | File | Purpose |
 |---|---|
-| `train_clustering.py` | Runs the clustering workflow |
-| `elbow_plot.png` | Shows the elbow analysis for k = 2–8 |
-| `labeled_students.csv` | Contains student features and the `Segment` column |
-| `kmeans_model.pkl` | Stores the fitted scaler, K-Means model, feature names, and selected k |
-| `requirements.txt` | Lists required Python libraries |
+| `train_clustering.py` | Runs the clustering workflow. |
+| `elbow_plot.png` | Shows inertia for k = 2–8 and marks the selected k. |
+| `labeled_students.csv` | Contains student features and assigned segment labels. |
+| `kmeans_model.pkl` | Stores the fitted scaler, K-Means model, feature names, and selected k. |
+| `requirements.txt` | Lists the required Python libraries. |
 
-### Validation and Limitations
+### Validation and Results
 
-The generated labeled dataset contains 300 records and a `Segment` column with no missing labels. Cluster numbers are identifiers, not rankings of student performance. Because the dataset is synthetic, the resulting groups are exploratory and should not be interpreted as validated categories of real students.
+The latest successful run processed 300 student records and selected **k = 5**.
 
+| Segment | Number of Students |
+|---:|---:|
+| 0 | 60 |
+| 1 | 79 |
+| 2 | 56 |
+| 3 | 46 |
+| 4 | 59 |
+| **Total** | **300** |
+
+The labeled dataset contains 300 records with no missing segment labels. The saved model was successfully loaded using `joblib`, and its selected k and feature names were verified.
+
+### Limitations
+
+The dataset is synthetic, so the resulting clusters are exploratory and have not been validated against real student outcomes. Segment numbers are identifiers, not rankings of student performance. The selected cluster count is an estimate based on the elbow-analysis heuristic and should be reviewed using domain knowledge and real data before practical decisions are made.
+
+### Task 2 Handover Note
+
+I standardized engagement features and trained a K-Means clustering model. Selecting a suitable cluster count was challenging. I left out validation against real student outcomes because the dataset is synthetic.
