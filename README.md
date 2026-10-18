@@ -232,3 +232,43 @@ The dataset is synthetic, so the resulting clusters are exploratory and have not
 ### Task 2 Handover Note
 
 I standardized engagement features and trained a K-Means clustering model. Selecting a suitable cluster count was challenging. I left out validation against real student outcomes because the dataset is synthetic.
+
+
+## Student Segment Profile Report
+
+The project includes a script that generates a summary report
+for the student segments created using K-Means clustering.
+
+### Generate the Report
+
+1. Install the required dependencies:
+
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+2. Ensure `labeled_students.csv` exists in the project root.
+
+3. Run the report generator:
+
+   ```bash
+   python generate_segment_profile.py
+   ```
+   ### View the Report
+
+[Open the Segment Profile Report](segment_profile_report.md)
+
+### Generated Outputs
+
+- `segment_profile_report.md` — segment summary and interpretation.
+- `segment_grade.png` — average grade by segment.
+- `segment_attendance.png` — attendance distribution by segment.
+
+The report summarizes student counts, mean attendance rates,
+and mean grades for each segment.
+
+### Limitations
+
+The results are exploratory. Segment numbers are identifiers,
+not rankings, and the findings should not be treated as proof
+of causal relationships or validated real-world student outcomes.
