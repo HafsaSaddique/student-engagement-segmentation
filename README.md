@@ -272,3 +272,38 @@ and mean grades for each segment.
 The results are exploratory. Segment numbers are identifiers,
 not rankings, and the findings should not be treated as proof
 of causal relationships or validated real-world student outcomes.
+## Task 4: Interactive Streamlit Dashboard
+
+The interactive dashboard provides an overview of student engagement and academic performance.
+
+### Features
+- Overall student count, average grade, and attendance KPIs.
+- Interactive comparison of student segments.
+- Segment-specific grade and attendance visualizations.
+- Student records table with CSV download functionality.
+- Original segment profile report charts.
+
+### How to Run
+
+1. Install the required packages:
+
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+2. Ensure the following files are in the project folder:
+   - `labeled_students.csv`
+   - `segment_grade.png`
+   - `segment_attendance.png`
+
+3. Start the dashboard:
+
+   ```bash
+   python -m streamlit run streamlit_dashboard_app.py
+   ```
+
+4. Open the local URL displayed in the terminal.
+
+### Testing
+
+The dashboard was launched locally and its interface was checked. Complete the final checks for segment selection, chart updates, and CSV download before submission.
