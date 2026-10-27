@@ -307,3 +307,57 @@ The interactive dashboard provides an overview of student engagement and academi
 ### Testing
 
 The dashboard was launched locally and its interface was checked. Complete the final checks for segment selection, chart updates, and CSV download before submission.
+
+## Task 5: Deployment and Client Handover
+
+### Live Dashboard
+
+**Live App:** https://hafsasaddique-student-engagement-streamlit-dashboard-app-hy4thb.streamlit.app/
+
+**GitHub Repository:** https://github.com/HafsaSaddique/student-engagement-segmentation
+
+### Project Overview
+
+This project uses K-Means clustering to explore student engagement patterns based on attendance rate, average grade, and extracurricular participation. The Streamlit dashboard presents student statistics, segment comparisons, visualizations, and downloadable student records.
+
+**Data notice:** The current dataset contains 300 synthetic student records. It does not contain actual student information, and the segments should not be used to make decisions about real students without further validation.
+
+### How to Use the Dashboard
+
+1. Open the live dashboard link above.
+2. Review the overall student count, average grade, and attendance KPIs.
+3. Explore the segment comparison and segment-specific visualizations.
+4. Open the student records section to inspect the available records.
+5. Use the CSV download option to export the displayed records, if required.
+
+### Local Setup
+
+1. Install Python 3 and Git.
+2. Clone the GitHub repository.
+3. Open a terminal in the project directory.
+4. Install dependencies:
+
+   `python -m pip install -r requirements.txt`
+
+5. Start the dashboard:
+
+   `python -m streamlit run streamlit_dashboard_app.py`
+
+6. Open the local URL printed in the terminal.
+
+### Data Refresh and Maintenance
+
+- Keep a backup of the existing dataset before replacing it.
+- The dashboard currently uses `labeled_students.csv`. Keep its expected columns and data types when updating the data.
+- If new student data is introduced, review data quality, rerun the required preparation and clustering workflow, regenerate segment reports and charts, and test the dashboard before deployment.
+- Do not upload confidential student information to a public repository. Use approved access controls and follow the school's data protection requirements for real student records.
+- Keep `requirements.txt` updated when adding or changing Python dependencies.
+- After updating the code in GitHub, check the Streamlit Community Cloud deployment logs and test the live application.
+- Back up important project files and periodically verify that the app link remains accessible.
+
+### Handover and Contact
+
+Project maintainer: Hafsa Saddique  
+GitHub repository: https://github.com/HafsaSaddique/student-engagement-segmentation
+
+The school should assign an authorised IT contact to manage access, data updates, and ongoing maintenance. The current analysis is exploratory and is based on synthetic data.
