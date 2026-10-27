@@ -1,0 +1,35 @@
+STUDENT ENGAGEMENT SEGMENTATION — HANDOVER NOTE
+
+Project: Bright Future School — Student Engagement Segmentation
+
+Live Dashboard:
+https://hafsasaddique-student-engagement-streamlit-dashboard-app-hy4thb.streamlit.app/
+
+GitHub Repository:
+https://github.com/HafsaSaddique/student-engagement-segmentation
+
+Project Summary:
+The project uses K-Means clustering to group 300 synthetic student records based on attendance, average grade, and extracurricular participation. The Streamlit dashboard displays overall KPIs, segment comparisons, visualizations, student records, and a CSV download option.
+
+How to Run Locally:
+1. Install Python 3.
+2. Install dependencies using: python -m pip install -r requirements.txt
+3. Run: python -m streamlit run streamlit_dashboard_app.py
+4. Open the local URL displayed in the terminal.
+
+Maintenance:
+- Back up the dataset before making changes.
+- Validate updated data and preserve the required column names.
+- Rerun the data preparation and clustering workflow when the source data changes.
+- Regenerate reports and charts when needed.
+- Check application logs and test the dashboard after code or dependency updates.
+- Do not publish confidential student information in the public repository.
+- Assign an authorised school IT contact for future maintenance.
+
+Limitations:
+The current dataset is synthetic and contains no real student records. The segment results are exploratory and must be validated before being used for real educational decisions.
+
+Project Maintainer: Hafsa Saddique
+GitHub: https://github.com/HafsaSaddique/student-engagement-segmentation
+
+The school should assign its IT contact and confirm its approved process for handling real student data.
